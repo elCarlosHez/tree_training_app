@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">tree_training_app</string>
+    <string name="activity_main_title">Gusto verte.\n¿Qué se hace hoy?</string>
+    <string name="activity_main_button">REGISTRA UN ÁRBOL</string>
+    <string name="activity_main_subtitle">ARBOLES</string>
+    <string name="take_picture_instructions_title">Tómale una foto al árbol completo.</string>
+    <string name="successful_register_tree_title">¡Registraste un árbol!</string>
+    <string name="successful_register_tree_text">Con esta simple acción ya pusiste de tu parte para limpiar el aire de la zona, darle hogar a aves e insectos, promover la seguridad y la salud de tus vecinos y generar empleos. \n ¡Qué día!</string>
+    <string name="successful_register_tree_button_restart">REGISTRA OTRO</string>
+    <string name="successful_register_tree_button_exit">VOLVER AL INICIO</string>
 </resources>
