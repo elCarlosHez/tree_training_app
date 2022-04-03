@@ -53,7 +53,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:paddingHorizontal="20dp">
+                android:paddingHorizontal="@dimen/main_padding">
 
                 <TextView
                     android:id="@+id/textView"
@@ -70,14 +70,15 @@
                     android:textSize="13dp" />
             </LinearLayout>
 
-            <Button
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/riesgoButton"
                 android:layout_width="54dp"
                 android:layout_height="54dp"
                 android:backgroundTint="@color/colorPrimaryAccent"
+                app:borderWidth="0dp"
                 app:cornerRadius="8dp"
-                app:icon="@drawable/ic_baseline_navigate_next_24"
-                app:iconTint="@color/colorTertiary" />
+                app:srcCompat="@drawable/ic_baseline_navigate_next_24"
+                app:tint="@color/colorTertiary" />
         </LinearLayout>
     </LinearLayout>
 
