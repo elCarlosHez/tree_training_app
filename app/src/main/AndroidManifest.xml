@@ -13,7 +13,7 @@
             android:name=".SuccessfulRegisterTree"
             android:exported="false" />
         <activity
-            android:name=".Take_picture_instructions"
+            android:name=".TakePictureInstructions"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
