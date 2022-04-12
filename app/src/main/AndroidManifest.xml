@@ -14,13 +14,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tree_training_app">
         <activity
-            android:name=".FillTreeInfo"
+            android:name=".FillTreeInfoActivity"
             android:exported="false" />
         <activity
-            android:name=".SuccessfulRegisterTree"
+            android:name=".SuccessfulRegisterTreeActivity"
             android:exported="false" />
         <activity
-            android:name=".TakePictureInstructions"
+            android:name=".TakePictureInstructionsActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

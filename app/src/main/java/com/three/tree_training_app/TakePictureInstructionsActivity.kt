@@ -4,19 +4,15 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Environment
-import android.provider.MediaStore
-import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
 import com.three.tree_training_app.databinding.ActivityTakePictureInstructionsBinding
 import java.io.File
-import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
 
-class TakePictureInstructions : AppCompatActivity() {
+class TakePictureInstructionsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTakePictureInstructionsBinding
 
     private var latestTmpUri: Uri? = null
@@ -24,9 +20,10 @@ class TakePictureInstructions : AppCompatActivity() {
     private val takeImageResult = registerForActivityResult(ActivityResultContracts.TakePicture()) { isSuccess ->
         if (isSuccess) {
             latestTmpUri?.let { uri ->
-                var intent = Intent(this, FillTreeInfo::class.java)
-                intent.putExtra("img",uri.toString())
-                startActivity(intent)
+                Intent(this, FillTreeInfoActivity::class.java).let {
+                    it.putExtra("img",uri.toString())
+                    startActivity(it)
+                }
             }
         }
     }

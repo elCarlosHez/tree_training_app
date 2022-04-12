@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.buttonRegister.setOnClickListener {
-            var intent = Intent(this, TakePictureInstructions::class.java)
+            var intent = Intent(this, TakePictureInstructionsActivity::class.java)
             startActivity(intent)
         }
     }

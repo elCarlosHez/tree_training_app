@@ -6,7 +6,7 @@ import android.os.Bundle
 import com.three.tree_training_app.databinding.ActivityFillTreeInfoBinding
 import com.three.tree_training_app.databinding.ActivityTakePictureInstructionsBinding
 
-class FillTreeInfo : AppCompatActivity() {
+class FillTreeInfoActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFillTreeInfoBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
