@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="main_padding">20dp</dimen>
+    <dimen name="tree_info_margin">30dp</dimen>
+    <dimen name="tree_info_text_height">50dp</dimen>
 </resources>

@@ -8,4 +8,16 @@
     <string name="successful_register_tree_text">Con esta simple acción ya pusiste de tu parte para limpiar el aire de la zona, darle hogar a aves e insectos, promover la seguridad y la salud de tus vecinos y generar empleos. \n ¡Qué día!</string>
     <string name="successful_register_tree_button_restart">REGISTRA OTRO</string>
     <string name="successful_register_tree_button_exit">VOLVER AL INICIO</string>
+    <string name="tree_info_scientific_name_label">Nombre científico</string>
+    <string name="tree_info_common_name_label">Nombre común</string>
+    <string name="tree_info_diameter_label">Diámetro (cm):</string>
+    <string name="tree_info_height_label">Altura (m):</string>
+    <string name="tree_info_risk_title">Riesgo:</string>
+    <string name="tree_info_risk_low">Inminente</string>
+    <string name="tree_info_risk_medium">Grave</string>
+    <string name="tree_info_risk_high">Despreciable</string>
+    <string name="tree_info_stage_title">Etapa:</string>
+    <string name="tree_info_stage_low">Joven</string>
+    <string name="tree_info_stage_medium">Maduro</string>
+    <string name="tree_info_stage_high">Senil</string>
 </resources>
