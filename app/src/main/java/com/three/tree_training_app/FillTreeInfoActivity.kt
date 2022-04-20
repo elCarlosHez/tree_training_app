@@ -1,6 +1,5 @@
 package com.three.tree_training_app
 
-import android.media.ExifInterface
 import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
