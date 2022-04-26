@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -22,6 +23,7 @@ class TreeMapFragment : Fragment() {
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var googleMap: GoogleMap
+    private val model: TreeInfoViewModel by activityViewModels()
 
     private val callback = OnMapReadyCallback { googleMap ->
         this.googleMap = googleMap
@@ -52,7 +54,7 @@ class TreeMapFragment : Fragment() {
                     markUserLocation()
                 } else -> {
                 // No location access granted.
-            }
+                }
             }
         }
 
@@ -71,6 +73,7 @@ class TreeMapFragment : Fragment() {
                     if (location != null) {
                         // Add a mark and move the map to the user location
                         val userLocation = LatLng(location.latitude, location.longitude)
+                        model.setUserLocation(userLocation)
                         this.googleMap.addMarker(MarkerOptions().position(userLocation))
                         this.googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 10f))
                     }

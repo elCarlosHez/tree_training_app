@@ -20,4 +20,5 @@
     <string name="tree_info_stage_low">Joven</string>
     <string name="tree_info_stage_medium">Maduro</string>
     <string name="tree_info_stage_high">Senil</string>
+    <string name="tree_info_button">Guardar</string>
 </resources>
