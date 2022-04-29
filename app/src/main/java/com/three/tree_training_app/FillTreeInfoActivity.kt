@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.RadioButton
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.maps.model.LatLng
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
@@ -22,8 +23,8 @@ class FillTreeInfoActivity : AppCompatActivity() {
     private val model: TreeInfoViewModel by viewModels()
     private lateinit var storage: FirebaseStorage
     private lateinit var database: FirebaseFirestore
-    private var riskSelected = "low"
-    private var stateSelected = "low"
+    private var riskSelected = RadioLevelsEnum.LOW.levelName
+    private var stateSelected = RadioLevelsEnum.LOW.levelName
     private lateinit var documentReference: DocumentReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,25 +45,49 @@ class FillTreeInfoActivity : AppCompatActivity() {
             saveTreeImage(it, documentReference.id)
         }
 
-        binding.button.setOnClickListener {
-            val tree = TreeModel(
-                commonName = binding.commonName.text.toString(),
-                scientificName = binding.scientificName.text.toString(),
-                diameter = binding.diameter.text.toString().toFloat(),
-                height = binding.height.text.toString().toFloat(),
-                risk = riskSelected,
-                state = stateSelected,
-                latitude = model.userLocation.value!!.latitude,
-                longitude = model.userLocation.value!!.longitude,
-            )
+        model.getUserLocation().observe(this) {latLng: LatLng ->
+            binding.button.setOnClickListener {
+                val tree = TreeModel(
+                    commonName = binding.commonName.text.toString(),
+                    scientificName = binding.scientificName.text.toString(),
+                    diameter = binding.diameter.text.toString().toFloat(),
+                    height = binding.height.text.toString().toFloat(),
+                    risk = riskSelected,
+                    state = stateSelected,
+                    latitude = latLng.latitude,
+                    longitude = latLng.longitude,
+                )
 
-            saveNewTree(tree, documentReference)
+                saveNewTree(tree, documentReference)
+            }
+        }
+
+        binding.risk.setOnCheckedChangeListener{ group, checkedId ->
+            if(group.id == binding.risk.id){
+                riskSelected = when(checkedId) {
+                    binding.riskLow.id -> RadioLevelsEnum.LOW.levelName
+                    binding.riskMedium.id -> RadioLevelsEnum.MEDIUM.levelName
+                    binding.riskHigh.id -> RadioLevelsEnum.HIGH.levelName
+                    else -> RadioLevelsEnum.LOW.levelName
+                }
+            }
+        }
+
+        binding.stateGroup.setOnCheckedChangeListener{ group, checkedId ->
+            if(group.id == binding.stateGroup.id){
+                stateSelected = when(checkedId) {
+                    binding.stateLow.id -> RadioLevelsEnum.LOW.levelName
+                    binding.stateMedium.id -> RadioLevelsEnum.MEDIUM.levelName
+                    binding.stateHigh.id -> RadioLevelsEnum.HIGH.levelName
+                    else -> RadioLevelsEnum.LOW.levelName
+                }
+            }
         }
     }
 
     private fun saveNewTree(tree: TreeModel, document: DocumentReference) {
         document.set(tree)
-                .addOnSuccessListener { documentReference ->
+                .addOnSuccessListener {
                     Log.d("Firestore", "DocumentSnapshot added with ID: ${document.id}")
                     // We send the user to the next activity after we upload the tree's info
                     startActivity(Intent(this, SuccessfulRegisterTreeActivity::class.java))
@@ -81,57 +106,9 @@ class FillTreeInfoActivity : AppCompatActivity() {
         // Register observers to listen for when the download is done or if it fails
         uploadTask.addOnFailureListener { e ->
             Log.w("FireStorage", "Error creating an image", e)
-        }.addOnSuccessListener { taskSnapshot ->
+        }.addOnSuccessListener {
             // taskSnapshot.metadata contains file metadata such as size, content-type, etc.
             Log.w("FireStorage", "Image uploaded")
-        }
-    }
-
-    fun onRiskRadioButtonClicked(view: View) {
-        if (view is RadioButton) {
-            // Is the button now checked?
-            val checked = view.isChecked
-
-            // Check which radio button was clicked
-            when (view.getId()) {
-                binding.riskLow.id ->
-                    if (checked) {
-                        riskSelected = "low"
-                    }
-                binding.riskMedium.id ->
-                    if (checked) {
-                        riskSelected = "medium"
-                    }
-                binding.riskHigh.id -> {
-                    if (checked) {
-                        riskSelected = "high"
-                    }
-                }
-            }
-        }
-    }
-
-    fun onStateRadioButtonClicked(view: View) {
-        if (view is RadioButton) {
-            // Is the button now checked?
-            val checked = view.isChecked
-
-            // Check which radio button was clicked
-            when (view.getId()) {
-                binding.stateLow.id ->
-                    if (checked) {
-                        stateSelected = "low"
-                    }
-                binding.stateMedium.id ->
-                    if (checked) {
-                        stateSelected = "medium"
-                    }
-                binding.stateHigh.id -> {
-                    if (checked) {
-                        stateSelected = "high"
-                    }
-                }
-            }
         }
     }
 }

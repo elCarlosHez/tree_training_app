@@ -109,8 +109,7 @@
                 android:layout_weight="1"
                 android:text="@string/tree_info_risk_low"
                 tools:layout_editor_absoluteX="225dp"
-                tools:layout_editor_absoluteY="396dp"
-                android:onClick="onRiskRadioButtonClicked" />
+                tools:layout_editor_absoluteY="396dp" />
 
             <RadioButton
                 android:id="@+id/risk_medium"
@@ -119,8 +118,7 @@
                 android:layout_weight="1"
                 android:text="@string/tree_info_risk_medium"
                 tools:layout_editor_absoluteX="44dp"
-                tools:layout_editor_absoluteY="405dp"
-                android:onClick="onRiskRadioButtonClicked" />
+                tools:layout_editor_absoluteY="405dp" />
 
             <RadioButton
                 android:id="@+id/risk_high"
@@ -129,8 +127,7 @@
                 android:layout_weight="1"
                 android:text="@string/tree_info_risk_high"
                 tools:layout_editor_absoluteX="69dp"
-                tools:layout_editor_absoluteY="348dp"
-                android:onClick="onRiskRadioButtonClicked" />
+                tools:layout_editor_absoluteY="348dp" />
         </RadioGroup>
 
         <TextView
@@ -155,24 +152,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/tree_info_stage_low"
-                android:onClick="onStateRadioButtonClicked" />
+                android:text="@string/tree_info_stage_low" />
 
             <RadioButton
                 android:id="@+id/state_medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/tree_info_stage_medium"
-                android:onClick="onStateRadioButtonClicked" />
+                android:text="@string/tree_info_stage_medium" />
 
             <RadioButton
                 android:id="@+id/state_high"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/tree_info_stage_high"
-                android:onClick="onStateRadioButtonClicked" />
+                android:text="@string/tree_info_stage_high" />
         </RadioGroup>
 
         <androidx.fragment.app.FragmentContainerView
